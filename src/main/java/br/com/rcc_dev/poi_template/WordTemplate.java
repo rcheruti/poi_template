@@ -48,10 +48,13 @@ public class WordTemplate extends HashMap<String, String>{
         }
         for( XWPFHeader x : this.docx.getHeaderList() )  _apply( x.getParagraphs() );
         for( XWPFFooter x : this.docx.getFooterList() )  _apply( x.getParagraphs() );
-        for( XWPFTable x : this.docx.getTables() )
-          for( XWPFTableRow r : x.getRows() )
-            for( XWPFTableCell c : r.getTableCells() )
-              _apply( c.getParagraphs() );
+        for( XWPFTable x : this.docx.getTables() ) {
+            for( XWPFTableRow r : x.getRows() ) {
+                for( XWPFTableCell c : r.getTableCells() ) {
+                    _apply( c.getParagraphs() );
+                }
+            }
+        }
         _apply( this.docx.getParagraphs() );
     }
     
